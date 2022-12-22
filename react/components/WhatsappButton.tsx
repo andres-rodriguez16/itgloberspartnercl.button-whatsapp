@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Proptypes from 'prop-types'
+import { useCssHandles } from 'vtex.css-handles'
 
 type props = {
   logo : string,
@@ -11,10 +12,11 @@ type props = {
 }
 
 const WhatsappButton = ({logo, phone, message, width, height} : props) => {
-  console.log(logo, phone, message);
+  const CSS_HANDLES = ["whatsappButton-container"]
+  const handles = useCssHandles(CSS_HANDLES)
   const formattedMessage = message.replace(/ /g, "%20")
   return <>
-  <div className='fixed bottom-2 right-2 flex flexColumn' >
+  <div className={`${handles["whatsappButton-container"]} fixed bottom-2 right-2 flex flexColumn`}>
   <a
         href={`https://wa.me/${phone}?text=${formattedMessage}`}
         target="_blank"
